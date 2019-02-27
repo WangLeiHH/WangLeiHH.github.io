@@ -1,0 +1,567 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  
+    <title>计算机网络 | 不完整的旋律的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="大圣">
+    
+
+    
+    <meta name="description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+<meta name="keywords" content="COOKIE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="https://WangLeiHH.github.io/2019/02/27/2计算机网络/index.html">
+<meta property="og:site_name" content="不完整的旋律的博客">
+<meta property="og:description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/kBH2dj4.jpg">
+<meta property="og:updated_time" content="2019-02-27T11:40:29.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络">
+<meta name="twitter:description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+<meta name="twitter:image" content="https://i.imgur.com/kBH2dj4.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="不完整的旋律的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/222.gif" alt="不完整的旋律的博客" title="不完整的旋律的博客"></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="不完整的旋律的博客">不完整的旋律的博客</a></h1>
+				<h2 class="blog-motto">爱生活爱编程</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="hidden" name="q" value="site:WangLeiHH.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope="" itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/02/27/2计算机网络/" title="计算机网络" itemprop="url">计算机网络</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="大圣" target="_blank" itemprop="author">大圣</a>
+		
+  </p><p class="article-time">
+    <time datetime="2019-02-27T02:29:58.000Z" itemprop="datePublished"> 发表于 2019-02-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>#计算机网络</p>
+<p>###<img src="https://i.imgur.com/kBH2dj4.jpg" alt="">计算机网络体系</p>
+<p>##Cookie</p>
+<p>http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。<br>cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。<br>cookie曾一度用于客户端数据的存储，因为当时并没有其他合适的存储方法而作为唯一的存储手段，但随着浏览器技术的开发，cookie逐渐被淘汰，新的浏览器API已经允许开发者直接将数据存储到本地，如Web      storage API本地存储和会话存储  </p>
+<p>###1.用途</p>
+<ul>
+<li>会话状态管理（用户登录状态、购物车、游戏分数）  </li>
+<li>个性化设置（用户自定义设置、主题）  </li>
+<li>浏览器行为跟踪（跟踪分析用户行为）<br>###2.创建过程<br>服务器发送的相应报文包含Set-Cookie首部字段，客户端得到相应保温后把Cookie内容保存到浏览器中。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK   </span><br><span class="line">Content-type: text/html   </span><br><span class="line">Set-Cookie: yummy_cookie=choco  </span><br><span class="line">Set-Cookie: tasty_cookie=strawberry   </span><br><span class="line">[page content]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>客户端之后对同一服务器发送请求时，会从浏览器中取出Cookie信息并通过cookie请求首部子弹发送给服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/1.1 </span><br><span class="line">Host: www.example.org   </span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure></p>
+<p>###3.分类</p>
+<ul>
+<li>会话期：浏览器关闭后自动被删除</li>
+<li>持久性 指定一个特定的过期时间或有效期<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>###4.Session<br>除了可以将用户信息通过Cookie存储在用户浏览器中，也可以利用Session 存储在服务器端，存储在服务器端的信息更加安全。<br>Session 可以存储在服务器上的文件、数据库或者内存中。也可以将Session 存储在Redis这种内存型数据库中，效率会更高。<br>使用Session维护用户登录状态的过程：  </p>
+<ul>
+<li>用户进行登录时，用户提交包含用户名和密码的表单，放入http请求报文中  <ul>
+<li>服务器验证该用户名和密码，如果正确则把用户信息存储到Redis中，它在redis中的Key称为SessionID  </li>
+<li>服务器返回响应报文的Set-Cookie首部字段包含了这个SessionID,客户端收到响应报文之后将该Cookie值存到浏览器中  </li>
+<li>客户端请求服务器时会包含该Cookie值，服务器收到之后提取出SessionID，从Redis中取出用户信息，继续之前的操作。<br>应该注意SessionID的安全性，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的值，此外，还需要经常重新生成SessionID.<br>在对安全性要求极高的场景下，例如转账等操作，除了使用Session管理用户状态之外，还需要对用户进行重新验证，比如输入密码，或者使用短信验证。<br>###5.浏览器禁用Cookie<br>此时无法使用Cookie来保存用户信息，只能使用Session。除此之外，不能再将Sessionid存放到cookie中，而是使用URL重写技术，将SESSIONID 作为URL的参数进行传递。<br>###6.Cookie与Session的选择</li>
+<li>Cookie只能存储ASCII码字符串，而Session可以存储任何类型的数据，因此在考虑数据复杂性时首选Session</li>
+<li>Cookie存储在浏览器中，容易被恶意查看，如果非要将一些隐私数据存在Cookie中，可以将Cookie值进行加密，然后在服务器进行解密</li>
+<li>对于大型网站，如果用户的所有信息都存储在Session中，那么开销是十分大的，因此不建议将所有的用户信息都存放到Session中<br>##缓存</li>
+</ul>
+</li>
+</ul>
+<p>###1.优点</p>
+<ul>
+<li>缓解服务器压力</li>
+<li>降低客户端获取资源的延迟，通常缓存位于内存中，读取缓存的速度更快。并且缓存在地理位置上也有可能比源服务器来的近，例如浏览器缓存<br>###2.实现方法</li>
+<li>让代理服务器进行缓存</li>
+<li>让客户端浏览器进行缓存<br>###3.Cache-Control<br>HTTP/1.1通过Cache-Control首部字段来控制缓存</li>
+</ul>
+<p>####3.1禁止进行缓存<br>no-store指令规定不能对请求或相应的任何一部分进行缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-store</span><br></pre></td></tr></table></figure></p>
+<p>####3.2强制确认缓存<br>no-cache指令规定缓存服务器需要向源服务器验证缓存资源的有效性，只有当缓存资源有效才将能够使用该缓存对客户端的请求进行响应。</p>
+<p>####3.3私有缓存和公共缓存<br>private 指令规定了将资源作为私有缓存，只能被单独用户所使用，一般存储在用户浏览器中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: private```  </span><br><span class="line">public 指令规定了将资源作为公共缓存，可以被多个用户所使用，一般存储在代理服务器中。</span><br></pre></td></tr></table></figure></p>
+<p>Cache-Control: public<code>`</code></p>
+<p>####3.4缓存过期机制<br>max-age指令出现在请求报文中，并且缓存资源的缓存时间小于该指令指定的时间，那么就能接受该缓存<br>max-age指令出现在响应报文中，表示缓存资源在缓存服务器中保存的时间  </p>
+<p>##虚拟主机<br>HTTP/1.1 使用虚拟主机技术，使得一台服务器拥有多个域名，并且在逻辑上可以看成多个服务器</p>
+<p>##通信数据转发</p>
+<p>###1.代理<br>代理服务器接受客户端的请求，并且转发给其他服务器。<br>使用代理的主要母的：</p>
+<ul>
+<li>缓存</li>
+<li>负载均衡</li>
+<li>网络访问控制</li>
+<li>访问日志记录<br>代理服务器分为正向代理和方向代理两种</li>
+<li>正向代理客户端可以明确访问的服务器地址，而服务器只清楚请求来自于哪个代理服务器，而不清楚来自于哪个客户端</li>
+<li>反向代理 隐藏了服务器信息，当客户端请求服务器时，服务器并没用相应的请求资源，而是转发给其他拥有该资源的服务器，从该服务器取得资源响应给客户端。反向代理用到了分布式部署，通常使用Nginx实现反向代理。<br>主要用于服务器集群分布式部署的情况下，多个客户端给服务器发送请求，Nginx服务器接收到请求后按照一定的规则分发了后端业务处理服务器进行处理。正反同时使用<br>###2.网关<br>与代理服务器不同的是，网关服务器会将HTTP转化为其他协议进行通信，从而请求其他非http服务器的服务。<br>###3.隧道<br>使用SSL等加密手段，在客户端和服务器之间建立一条安全的通信线路。<br>##HTTPS<br>HTTP有以下安全性问题：</li>
+<li>使用明文进行通信，内容可能被窃听</li>
+<li>不验证通信方的身份，通信方的身份可能遭遇伪装</li>
+<li>无法证明报文的完整性，报文有可能遭到篡改  </li>
+</ul>
+<p>HTTPS并不是新协议，而是让HTTP先和SSL通信，再由SSL和TCP通信，也就是说HTTPS使用了隧道进行通信。</p>
+<p>通过使用SSL，HTTPS具有了加密（防窃听）、认证(防伪装）、和完整性保护（防篡改）。</p>
+<p>##加密</p>
+<p>###1.对称秘钥加密<br>对称秘钥加密，加密和解密使用同一秘钥。</p>
+<ul>
+<li>优点：运算速度快；</li>
+<li>缺点： 无法安全地将秘钥传输给通信方。<br>###2.非对称秘钥加密<br>非对称秘钥加密，加密和解密使用不同的秘钥<br>公开秘钥所有人都可以获得，通信发送方获得接收方的公开秘钥后，就可以使用公开秘钥进行加密，接收方收到通信内容后使用私有秘钥解密。  </li>
+</ul>
+<p>非对称秘钥除了用来加密，还可以用来签名。因为私有秘钥无法被其他人获取，因此通信发送方使用其私有秘钥进行签名，通信接收方使用发送方的公开秘钥对签名进行解密，就能判断这个签名是否正确。</p>
+<ul>
+<li>优点： 可以更安全地将公开秘钥传输给通信发送方；</li>
+<li>缺点： 运算速度慢。<br>###3.HTTPS采用的加密方式<br>Https采用混合的加密机制，使用非对称秘钥加密用于传输对称秘钥来保证传输过程中的安全性，之后使用对称秘钥加密进行通信来保证通信过程中的效率。<br>##HTTP/1.1新特性</li>
+<li>默认是长连接的</li>
+<li>支持流水线</li>
+<li>支持同时打开多个TCP连接</li>
+<li>支持虚拟主机</li>
+<li>新增状态码100(接收的请求正在处理,表明到目前为止都很正常，客户端可以继续发送请求或者忽略这个响应)</li>
+<li>支持分块传世编码</li>
+<li>新增缓存处理指令MAX-AGE</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面试/">面试</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/COOKIE/">COOKIE</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://WangLeiHH.github.io/2019/02/27/2计算机网络/" data-title="计算机网络 | 不完整的旋律的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="/2019/02/27/3-Socket/" title="3.Socket">
+  <strong>上一篇：</strong><br>
+  <span>
+  3.Socket</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/02/27/1linux/" title="1linux">
+ <strong>下一篇：</strong><br> 
+ <span>1linux
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试/" title="面试">面试<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/vue/" title="vue">vue<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+    </div>
+  </div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer">
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 青葱岁月 我装饰过谁的梦 流年往事 谁又影响了我的整个生命  <br>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="大圣">大圣</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
