@@ -11,19 +11,19 @@
     
 
     
-    <meta name="description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+    <meta name="description" content="计算机网络###计算机网络体系 Cookiehttp协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没有其他合适">
 <meta name="keywords" content="COOKIE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络">
 <meta property="og:url" content="https://WangLeiHH.github.io/2019/02/27/2计算机网络/index.html">
 <meta property="og:site_name" content="不完整的旋律的博客">
-<meta property="og:description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+<meta property="og:description" content="计算机网络###计算机网络体系 Cookiehttp协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没有其他合适">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/kBH2dj4.jpg">
-<meta property="og:updated_time" content="2019-02-27T11:40:29.344Z">
+<meta property="og:updated_time" content="2019-02-27T12:30:12.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
-<meta name="twitter:description" content="#计算机网络 ###计算机网络体系 ##Cookie http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没">
+<meta name="twitter:description" content="计算机网络###计算机网络体系 Cookiehttp协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。cookie曾一度用于客户端数据的存储，因为当时并没有其他合适">
 <meta name="twitter:image" content="https://i.imgur.com/kBH2dj4.jpg">
 
     
@@ -102,78 +102,71 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie"><span class="toc-number">1.1.</span> <span class="toc-text">Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-用途"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建过程"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.创建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-分类"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Session"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.Session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-浏览器禁用Cookie"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.浏览器禁用Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Cookie与Session的选择"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.Cookie与Session的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存"><span class="toc-number">1.2.</span> <span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-优点"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现方法"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.实现方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Cache-Control"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.Cache-Control</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1禁止进行缓存"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">3.1禁止进行缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2强制确认缓存"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">3.2强制确认缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3私有缓存和公共缓存"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">3.3私有缓存和公共缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4缓存过期机制"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">3.4缓存过期机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟主机"><span class="toc-number">1.3.</span> <span class="toc-text">虚拟主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通信数据转发"><span class="toc-number">1.4.</span> <span class="toc-text">通信数据转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-代理"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-网关"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-隧道"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.隧道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-number">1.5.</span> <span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密"><span class="toc-number">1.6.</span> <span class="toc-text">加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-对称秘钥加密"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.对称秘钥加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-非对称秘钥加密"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.非对称秘钥加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-HTTPS采用的加密方式"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.HTTPS采用的加密方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-1-1新特性"><span class="toc-number">1.7.</span> <span class="toc-text">HTTP/1.1新特性</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>#计算机网络</p>
-<p>###<img src="https://i.imgur.com/kBH2dj4.jpg" alt="">计算机网络体系</p>
-<p>##Cookie</p>
-<p>http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。<br>cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。<br>cookie曾一度用于客户端数据的存储，因为当时并没有其他合适的存储方法而作为唯一的存储手段，但随着浏览器技术的开发，cookie逐渐被淘汰，新的浏览器API已经允许开发者直接将数据存储到本地，如Web      storage API本地存储和会话存储  </p>
-<p>###1.用途</p>
-<ul>
+		<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>###<img src="https://i.imgur.com/kBH2dj4.jpg" alt="">计算机网络体系</p>
+<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>http协议是无状态的，主要为了让http协议尽可能简单，http1.1引入Cookie来保存状态信息。<br>cookie是服务器发送到浏览器有浏览器保存的一小块数据，他会在浏览器再次访问服务器时被携带上，用于告知服务器两次请求来自于同一浏览器。由于每次都要携带cookie数据，因此会带来性能开销。<br>cookie曾一度用于客户端数据的存储，因为当时并没有其他合适的存储方法而作为唯一的存储手段，但随着浏览器技术的开发，cookie逐渐被淘汰，新的浏览器API已经允许开发者直接将数据存储到本地，如Web      storage API本地存储和会话存储  </p>
+<h3 id="1-用途"><a href="#1-用途" class="headerlink" title="1.用途"></a>1.用途</h3><ul>
 <li>会话状态管理（用户登录状态、购物车、游戏分数）  </li>
 <li>个性化设置（用户自定义设置、主题）  </li>
-<li>浏览器行为跟踪（跟踪分析用户行为）<br>###2.创建过程<br>服务器发送的相应报文包含Set-Cookie首部字段，客户端得到相应保温后把Cookie内容保存到浏览器中。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK   </span><br><span class="line">Content-type: text/html   </span><br><span class="line">Set-Cookie: yummy_cookie=choco  </span><br><span class="line">Set-Cookie: tasty_cookie=strawberry   </span><br><span class="line">[page content]</span><br></pre></td></tr></table></figure>
+<li>浏览器行为跟踪（跟踪分析用户行为）<h3 id="2-创建过程"><a href="#2-创建过程" class="headerlink" title="2.创建过程"></a>2.创建过程</h3>服务器发送的相应报文包含Set-Cookie首部字段，客户端得到相应保温后把Cookie内容保存到浏览器中。  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 OK   </span><br><span class="line">Content-type: text/html   </span><br><span class="line">Set-Cookie: yummy_cookie=choco  </span><br><span class="line">Set-Cookie: tasty_cookie=strawberry   </span><br><span class="line">[page content]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>客户端之后对同一服务器发送请求时，会从浏览器中取出Cookie信息并通过cookie请求首部子弹发送给服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /sample_page.html HTTP/1.1 </span><br><span class="line">Host: www.example.org   </span><br><span class="line">Cookie: yummy_cookie=choco; tasty_cookie=strawberry</span><br></pre></td></tr></table></figure></p>
-<p>###3.分类</p>
-<ul>
+<h3 id="3-分类"><a href="#3-分类" class="headerlink" title="3.分类"></a>3.分类</h3><ul>
 <li>会话期：浏览器关闭后自动被删除</li>
 <li>持久性 指定一个特定的过期时间或有效期<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>###4.Session<br>除了可以将用户信息通过Cookie存储在用户浏览器中，也可以利用Session 存储在服务器端，存储在服务器端的信息更加安全。<br>Session 可以存储在服务器上的文件、数据库或者内存中。也可以将Session 存储在Redis这种内存型数据库中，效率会更高。<br>使用Session维护用户登录状态的过程：  </p>
+<h3 id="4-Session"><a href="#4-Session" class="headerlink" title="4.Session"></a>4.Session</h3><p>除了可以将用户信息通过Cookie存储在用户浏览器中，也可以利用Session 存储在服务器端，存储在服务器端的信息更加安全。<br>Session 可以存储在服务器上的文件、数据库或者内存中。也可以将Session 存储在Redis这种内存型数据库中，效率会更高。<br>使用Session维护用户登录状态的过程：  </p>
 <ul>
 <li>用户进行登录时，用户提交包含用户名和密码的表单，放入http请求报文中  <ul>
 <li>服务器验证该用户名和密码，如果正确则把用户信息存储到Redis中，它在redis中的Key称为SessionID  </li>
 <li>服务器返回响应报文的Set-Cookie首部字段包含了这个SessionID,客户端收到响应报文之后将该Cookie值存到浏览器中  </li>
-<li>客户端请求服务器时会包含该Cookie值，服务器收到之后提取出SessionID，从Redis中取出用户信息，继续之前的操作。<br>应该注意SessionID的安全性，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的值，此外，还需要经常重新生成SessionID.<br>在对安全性要求极高的场景下，例如转账等操作，除了使用Session管理用户状态之外，还需要对用户进行重新验证，比如输入密码，或者使用短信验证。<br>###5.浏览器禁用Cookie<br>此时无法使用Cookie来保存用户信息，只能使用Session。除此之外，不能再将Sessionid存放到cookie中，而是使用URL重写技术，将SESSIONID 作为URL的参数进行传递。<br>###6.Cookie与Session的选择</li>
+<li>客户端请求服务器时会包含该Cookie值，服务器收到之后提取出SessionID，从Redis中取出用户信息，继续之前的操作。<br>应该注意SessionID的安全性，不能让它被恶意攻击者轻易获取，那么就不能产生一个容易被猜到的值，此外，还需要经常重新生成SessionID.<br>在对安全性要求极高的场景下，例如转账等操作，除了使用Session管理用户状态之外，还需要对用户进行重新验证，比如输入密码，或者使用短信验证。  <h3 id="5-浏览器禁用Cookie"><a href="#5-浏览器禁用Cookie" class="headerlink" title="5.浏览器禁用Cookie"></a>5.浏览器禁用Cookie</h3>此时无法使用Cookie来保存用户信息，只能使用Session。除此之外，不能再将Sessionid存放到cookie中，而是使用URL重写技术，将SESSIONID 作为URL的参数进行传递。<h3 id="6-Cookie与Session的选择"><a href="#6-Cookie与Session的选择" class="headerlink" title="6.Cookie与Session的选择"></a>6.Cookie与Session的选择</h3></li>
 <li>Cookie只能存储ASCII码字符串，而Session可以存储任何类型的数据，因此在考虑数据复杂性时首选Session</li>
 <li>Cookie存储在浏览器中，容易被恶意查看，如果非要将一些隐私数据存在Cookie中，可以将Cookie值进行加密，然后在服务器进行解密</li>
-<li>对于大型网站，如果用户的所有信息都存储在Session中，那么开销是十分大的，因此不建议将所有的用户信息都存放到Session中<br>##缓存</li>
+<li>对于大型网站，如果用户的所有信息都存储在Session中，那么开销是十分大的，因此不建议将所有的用户信息都存放到Session中<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2></li>
 </ul>
 </li>
 </ul>
-<p>###1.优点</p>
-<ul>
+<h3 id="1-优点"><a href="#1-优点" class="headerlink" title="1.优点"></a>1.优点</h3><ul>
 <li>缓解服务器压力</li>
-<li>降低客户端获取资源的延迟，通常缓存位于内存中，读取缓存的速度更快。并且缓存在地理位置上也有可能比源服务器来的近，例如浏览器缓存<br>###2.实现方法</li>
+<li>降低客户端获取资源的延迟，通常缓存位于内存中，读取缓存的速度更快。并且缓存在地理位置上也有可能比源服务器来的近，例如浏览器缓存<h3 id="2-实现方法"><a href="#2-实现方法" class="headerlink" title="2.实现方法"></a>2.实现方法</h3></li>
 <li>让代理服务器进行缓存</li>
-<li>让客户端浏览器进行缓存<br>###3.Cache-Control<br>HTTP/1.1通过Cache-Control首部字段来控制缓存</li>
+<li>让客户端浏览器进行缓存<h3 id="3-Cache-Control"><a href="#3-Cache-Control" class="headerlink" title="3.Cache-Control"></a>3.Cache-Control</h3>HTTP/1.1通过Cache-Control首部字段来控制缓存</li>
 </ul>
-<p>####3.1禁止进行缓存<br>no-store指令规定不能对请求或相应的任何一部分进行缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-store</span><br></pre></td></tr></table></figure></p>
-<p>####3.2强制确认缓存<br>no-cache指令规定缓存服务器需要向源服务器验证缓存资源的有效性，只有当缓存资源有效才将能够使用该缓存对客户端的请求进行响应。</p>
-<p>####3.3私有缓存和公共缓存<br>private 指令规定了将资源作为私有缓存，只能被单独用户所使用，一般存储在用户浏览器中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: private```  </span><br><span class="line">public 指令规定了将资源作为公共缓存，可以被多个用户所使用，一般存储在代理服务器中。</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-1禁止进行缓存"><a href="#3-1禁止进行缓存" class="headerlink" title="3.1禁止进行缓存"></a>3.1禁止进行缓存</h4><p>no-store指令规定不能对请求或相应的任何一部分进行缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: no-store</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-2强制确认缓存"><a href="#3-2强制确认缓存" class="headerlink" title="3.2强制确认缓存"></a>3.2强制确认缓存</h4><p>no-cache指令规定缓存服务器需要向源服务器验证缓存资源的有效性，只有当缓存资源有效才将能够使用该缓存对客户端的请求进行响应。</p>
+<h4 id="3-3私有缓存和公共缓存"><a href="#3-3私有缓存和公共缓存" class="headerlink" title="3.3私有缓存和公共缓存"></a>3.3私有缓存和公共缓存</h4><p>private 指令规定了将资源作为私有缓存，只能被单独用户所使用，一般存储在用户浏览器中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: private```  </span><br><span class="line">public 指令规定了将资源作为公共缓存，可以被多个用户所使用，一般存储在代理服务器中。</span><br></pre></td></tr></table></figure></p>
 <p>Cache-Control: public<code>`</code></p>
-<p>####3.4缓存过期机制<br>max-age指令出现在请求报文中，并且缓存资源的缓存时间小于该指令指定的时间，那么就能接受该缓存<br>max-age指令出现在响应报文中，表示缓存资源在缓存服务器中保存的时间  </p>
-<p>##虚拟主机<br>HTTP/1.1 使用虚拟主机技术，使得一台服务器拥有多个域名，并且在逻辑上可以看成多个服务器</p>
-<p>##通信数据转发</p>
-<p>###1.代理<br>代理服务器接受客户端的请求，并且转发给其他服务器。<br>使用代理的主要母的：</p>
+<h4 id="3-4缓存过期机制"><a href="#3-4缓存过期机制" class="headerlink" title="3.4缓存过期机制"></a>3.4缓存过期机制</h4><p>max-age指令出现在请求报文中，并且缓存资源的缓存时间小于该指令指定的时间，那么就能接受该缓存<br>max-age指令出现在响应报文中，表示缓存资源在缓存服务器中保存的时间  </p>
+<h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><p>HTTP/1.1 使用虚拟主机技术，使得一台服务器拥有多个域名，并且在逻辑上可以看成多个服务器</p>
+<h2 id="通信数据转发"><a href="#通信数据转发" class="headerlink" title="通信数据转发"></a>通信数据转发</h2><h3 id="1-代理"><a href="#1-代理" class="headerlink" title="1.代理"></a>1.代理</h3><p>代理服务器接受客户端的请求，并且转发给其他服务器。<br>使用代理的主要母的：</p>
 <ul>
 <li>缓存</li>
 <li>负载均衡</li>
 <li>网络访问控制</li>
 <li>访问日志记录<br>代理服务器分为正向代理和方向代理两种</li>
 <li>正向代理客户端可以明确访问的服务器地址，而服务器只清楚请求来自于哪个代理服务器，而不清楚来自于哪个客户端</li>
-<li>反向代理 隐藏了服务器信息，当客户端请求服务器时，服务器并没用相应的请求资源，而是转发给其他拥有该资源的服务器，从该服务器取得资源响应给客户端。反向代理用到了分布式部署，通常使用Nginx实现反向代理。<br>主要用于服务器集群分布式部署的情况下，多个客户端给服务器发送请求，Nginx服务器接收到请求后按照一定的规则分发了后端业务处理服务器进行处理。正反同时使用<br>###2.网关<br>与代理服务器不同的是，网关服务器会将HTTP转化为其他协议进行通信，从而请求其他非http服务器的服务。<br>###3.隧道<br>使用SSL等加密手段，在客户端和服务器之间建立一条安全的通信线路。<br>##HTTPS<br>HTTP有以下安全性问题：</li>
+<li>反向代理 隐藏了服务器信息，当客户端请求服务器时，服务器并没用相应的请求资源，而是转发给其他拥有该资源的服务器，从该服务器取得资源响应给客户端。反向代理用到了分布式部署，通常使用Nginx实现反向代理。<br>主要用于服务器集群分布式部署的情况下，多个客户端给服务器发送请求，Nginx服务器接收到请求后按照一定的规则分发了后端业务处理服务器进行处理。正反同时使用<h3 id="2-网关"><a href="#2-网关" class="headerlink" title="2.网关"></a>2.网关</h3>与代理服务器不同的是，网关服务器会将HTTP转化为其他协议进行通信，从而请求其他非http服务器的服务。<h3 id="3-隧道"><a href="#3-隧道" class="headerlink" title="3.隧道"></a>3.隧道</h3>使用SSL等加密手段，在客户端和服务器之间建立一条安全的通信线路。<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2>HTTP有以下安全性问题：</li>
 <li>使用明文进行通信，内容可能被窃听</li>
 <li>不验证通信方的身份，通信方的身份可能遭遇伪装</li>
 <li>无法证明报文的完整性，报文有可能遭到篡改  </li>
 </ul>
 <p>HTTPS并不是新协议，而是让HTTP先和SSL通信，再由SSL和TCP通信，也就是说HTTPS使用了隧道进行通信。</p>
 <p>通过使用SSL，HTTPS具有了加密（防窃听）、认证(防伪装）、和完整性保护（防篡改）。</p>
-<p>##加密</p>
-<p>###1.对称秘钥加密<br>对称秘钥加密，加密和解密使用同一秘钥。</p>
+<h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><h3 id="1-对称秘钥加密"><a href="#1-对称秘钥加密" class="headerlink" title="1.对称秘钥加密"></a>1.对称秘钥加密</h3><p>对称秘钥加密，加密和解密使用同一秘钥。</p>
 <ul>
 <li>优点：运算速度快；</li>
-<li>缺点： 无法安全地将秘钥传输给通信方。<br>###2.非对称秘钥加密<br>非对称秘钥加密，加密和解密使用不同的秘钥<br>公开秘钥所有人都可以获得，通信发送方获得接收方的公开秘钥后，就可以使用公开秘钥进行加密，接收方收到通信内容后使用私有秘钥解密。  </li>
+<li>缺点： 无法安全地将秘钥传输给通信方。<h3 id="2-非对称秘钥加密"><a href="#2-非对称秘钥加密" class="headerlink" title="2.非对称秘钥加密"></a>2.非对称秘钥加密</h3>非对称秘钥加密，加密和解密使用不同的秘钥<br>公开秘钥所有人都可以获得，通信发送方获得接收方的公开秘钥后，就可以使用公开秘钥进行加密，接收方收到通信内容后使用私有秘钥解密。  </li>
 </ul>
 <p>非对称秘钥除了用来加密，还可以用来签名。因为私有秘钥无法被其他人获取，因此通信发送方使用其私有秘钥进行签名，通信接收方使用发送方的公开秘钥对签名进行解密，就能判断这个签名是否正确。</p>
 <ul>
 <li>优点： 可以更安全地将公开秘钥传输给通信发送方；</li>
-<li>缺点： 运算速度慢。<br>###3.HTTPS采用的加密方式<br>Https采用混合的加密机制，使用非对称秘钥加密用于传输对称秘钥来保证传输过程中的安全性，之后使用对称秘钥加密进行通信来保证通信过程中的效率。<br>##HTTP/1.1新特性</li>
+<li>缺点： 运算速度慢。<h3 id="3-HTTPS采用的加密方式"><a href="#3-HTTPS采用的加密方式" class="headerlink" title="3.HTTPS采用的加密方式"></a>3.HTTPS采用的加密方式</h3>Https采用混合的加密机制，使用非对称秘钥加密用于传输对称秘钥来保证传输过程中的安全性，之后使用对称秘钥加密进行通信来保证通信过程中的效率。<h2 id="HTTP-1-1新特性"><a href="#HTTP-1-1新特性" class="headerlink" title="HTTP/1.1新特性"></a>HTTP/1.1新特性</h2></li>
 <li>默认是长连接的</li>
 <li>支持流水线</li>
 <li>支持同时打开多个TCP连接</li>
@@ -246,7 +239,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机网络"><span class="toc-number">1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie"><span class="toc-number">1.1.</span> <span class="toc-text">Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-用途"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建过程"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.创建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-分类"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Session"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.Session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-浏览器禁用Cookie"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.浏览器禁用Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Cookie与Session的选择"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.Cookie与Session的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缓存"><span class="toc-number">1.2.</span> <span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-优点"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-实现方法"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.实现方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Cache-Control"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.Cache-Control</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1禁止进行缓存"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">3.1禁止进行缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2强制确认缓存"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">3.2强制确认缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3私有缓存和公共缓存"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">3.3私有缓存和公共缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4缓存过期机制"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">3.4缓存过期机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟主机"><span class="toc-number">1.3.</span> <span class="toc-text">虚拟主机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通信数据转发"><span class="toc-number">1.4.</span> <span class="toc-text">通信数据转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-代理"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-网关"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-隧道"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.隧道</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS"><span class="toc-number">1.5.</span> <span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密"><span class="toc-number">1.6.</span> <span class="toc-text">加密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-对称秘钥加密"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.对称秘钥加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-非对称秘钥加密"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.非对称秘钥加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-HTTPS采用的加密方式"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.HTTPS采用的加密方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-1-1新特性"><span class="toc-number">1.7.</span> <span class="toc-text">HTTP/1.1新特性</span></a></li></ol></li></ol>
  
   </div>
 
@@ -267,7 +260,7 @@
 		  
 		
 		  
-			<li><a href="/categories/面试/" title="面试">面试<sup>3</sup></a></li>
+			<li><a href="/categories/面试/" title="面试">面试<sup>5</sup></a></li>
 		  
 		
 		</ul>
@@ -288,11 +281,11 @@
 			
 		
 			
-				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
+				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
 			
 		
 			
@@ -303,6 +296,14 @@
 				<li><a href="/tags/js/" title="js">js<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -310,7 +311,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -318,7 +319,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
