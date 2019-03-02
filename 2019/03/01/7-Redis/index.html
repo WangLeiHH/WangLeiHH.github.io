@@ -11,17 +11,18 @@
     
 
     
-    <meta name="description" content="JAVA">
+    <meta name="description" content="概述Redis是速度非常快的非关系型(NoSQL)内存键值数据库，可以存储键和五种不同类型的值之间的映射。 键的类型只能为字符串，值支持五种类型数据：字符串、列表、集合、散列表、有序集合。strings、lists、hashes、sets、sortedsets Redis支持很多特性、例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片俩扩展写性能。 Redis是基于内存可持久化的日志">
+<meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7.Redis">
 <meta property="og:url" content="https://WangLeiHH.github.io/2019/03/01/7-Redis/index.html">
 <meta property="og:site_name" content="不完整的旋律的博客">
-<meta property="og:description" content="JAVA">
+<meta property="og:description" content="概述Redis是速度非常快的非关系型(NoSQL)内存键值数据库，可以存储键和五种不同类型的值之间的映射。 键的类型只能为字符串，值支持五种类型数据：字符串、列表、集合、散列表、有序集合。strings、lists、hashes、sets、sortedsets Redis支持很多特性、例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片俩扩展写性能。 Redis是基于内存可持久化的日志">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-01T09:26:12.945Z">
+<meta property="og:updated_time" content="2019-03-01T13:15:43.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="7.Redis">
-<meta name="twitter:description" content="JAVA">
+<meta name="twitter:description" content="概述Redis是速度非常快的非关系型(NoSQL)内存键值数据库，可以存储键和五种不同类型的值之间的映射。 键的类型只能为字符串，值支持五种类型数据：字符串、列表、集合、散列表、有序集合。strings、lists、hashes、sets、sortedsets Redis支持很多特性、例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片俩扩展写性能。 Redis是基于内存可持久化的日志">
 
     
     <link rel="alternative" href="/atom.xml" title="不完整的旋律的博客" type="application/atom+xml">
@@ -99,15 +100,147 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">2.1.</span> <span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典"><span class="toc-number">2.2.</span> <span class="toc-text">字典</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Redis是速度非常快的非关系型(NoSQL)内存键值数据库，可以存储键和五种不同类型的值之间的映射。</p>
+<p>键的类型只能为字符串，值支持五种类型数据：字符串、列表、集合、散列表、有序集合。strings、lists、hashes、sets、sortedsets</p>
+<p>Redis支持很多特性、例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片俩扩展写性能。</p>
+<p>Redis是基于内存可持久化的日志型key-value数据库。</p>
+<p>持久化数据库、关系型数据库</p>
+<ol>
+<li>全存储在硬盘上</li>
+<li>访问速度访问量过大时，数据库的压力就会增大</li>
+</ol>
+<p>可持久化：一边运行，一边把数据往硬盘中备份一份，防止断点等情况导致数据丢失。等恢复后，再把数据恢复到内存中，保证了数据的安全性。  </p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><pre><code>| 数据类型       | 可以存储的值    |  操作  |
+| --------   | -----:   | :----: |
+| string        | 字符串、整数或者浮点数      |   对整个字符串或者字符串的其中一部分执行操作&lt;br /&gt;对整数和浮点数执行自增或者自减操作    |
+| list        | 列表      |   从两端压入或者弹出元素 &lt;br /&gt;对单个或者多个元素进行修剪&lt;br /&gt;只保留一个范围内的元素  |
+| set        | 无序集合      |   添加、获取、移除单个元素&lt;br /&gt;检查一个元素是否存在于集合中&lt;br /&gt;计算交集、并集、差集&lt;br /&gt;重集合里面随机获取元素    |
+| hash       | 包含键值对的无序散列表 |  添加、获取、移除、单个键值对&lt;br /&gt;获取所有键值对&lt;br /&gt;检查某个键是否存在  |
+| zset       | 有序集合 |  添加、获取、删除元素&lt;br /&gt;根据分值范围或者成员来获取元素&lt;br /&gt;计算一个键的排名  |
+</code></pre><h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    &gt;set hello world</span><br><span class="line">    ok</span><br><span class="line">    &gt;get hello</span><br><span class="line">    &quot;world&quot;</span><br><span class="line">    &gt;del hello</span><br><span class="line">    (integer) 1</span><br><span class="line">    &gt;get hello</span><br><span class="line">    (nil) </span><br><span class="line">```   </span><br><span class="line">### list ###</span><br></pre></td></tr></table></figure>
+<pre><code>&gt;rpush list-key item
+
+&gt;rpush list-key item2
+
+&gt;rpush list-key item
+
+&gt;lrange list-key 0 -1
+1)&quot;item&quot;
+2)&quot;item2&quot;
+3)&quot;item&quot;
+
+&gt;lindex list-key 1
+
+&quot;item2&quot;
+
+&gt;lpop list-key
+&quot;item&quot;
+
+&gt;lrange list-key 0 -1
+1)&quot;item&quot;
+2)&quot;item2&quot;
+3)&quot;item&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### set ###</span><br></pre></td></tr></table></figure>
+<pre><code> &gt; sadd set-key item
+(integer) 1
+&gt; sadd set-key item2
+(integer) 1
+&gt; sadd set-key item3
+(integer) 1
+&gt; sadd set-key item
+(integer) 0
+
+&gt; smembers set-key
+1) &quot;item&quot;
+2) &quot;item2&quot;
+3) &quot;item3&quot;
+
+&gt; sismember set-key item4
+(integer) 0
+&gt; sismember set-key item
+(integer) 1
+
+&gt; srem set-key item2
+(integer) 1
+&gt; srem set-key item2
+(integer) 0
+
+&gt; smembers set-key
+1) &quot;item&quot;
+2) &quot;item3&quot;
+</code></pre> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### hash ###</span><br></pre></td></tr></table></figure>
+<pre><code>&gt; hset hash-key sub-key1 value1
+(integer) 1
+&gt; hset hash-key sub-key2 value2
+(integer) 1
+&gt; hset hash-key sub-key1 value1
+(integer) 0
+
+&gt; hgetall hash-key
+1) &quot;sub-key1&quot;
+2) &quot;value1&quot;
+3) &quot;sub-key2&quot;
+4) &quot;value2&quot;
+
+&gt; hdel hash-key sub-key2
+(integer) 1
+&gt; hdel hash-key sub-key2
+(integer) 0
+
+&gt; hget hash-key sub-key1
+&quot;value1&quot;
+
+&gt; hgetall hash-key
+1) &quot;sub-key1&quot;
+2) &quot;value1&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">### zset ###</span><br></pre></td></tr></table></figure>
+<pre><code> &gt; zadd zset-key 728 member1
+(integer) 1
+&gt; zadd zset-key 982 member0
+(integer) 1
+&gt; zadd zset-key 982 member0
+(integer) 0
+
+&gt; zrange zset-key 0 -1 withscores
+1) &quot;member1&quot;
+2) &quot;728&quot;
+3) &quot;member0&quot;
+4) &quot;982&quot;
+
+&gt; zrangebyscore zset-key 0 800 withscores
+1) &quot;member1&quot;
+2) &quot;728&quot;
+
+&gt; zrem zset-key member1
+(integer) 1
+&gt; zrem zset-key member1
+(integer) 0
+
+&gt; zrange zset-key 0 -1 withscores
+1) &quot;member0&quot;
+2) &quot;982&quot;
+</code></pre><p><code>`</code></p>
+<p>##数据结构 ##</p>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>dictht是一个三列表结构，是由拉链法保存哈希冲突。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面试/">面试</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Redis/">Redis</a>
+  </div>
 
 </div>
 
@@ -128,6 +261,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev">
+ <a href="/2019/03/02/8-java基础/" title="8-java基础">
+  <strong>上一篇：</strong><br>
+  <span>
+  8-java基础</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2019/02/28/6-数据库原理/" title="6.数据库原理">
@@ -149,7 +290,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型"><span class="toc-number">2.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">2.1.</span> <span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字典"><span class="toc-number">2.2.</span> <span class="toc-text">字典</span></a></li></ol></li></ol>
  
   </div>
 
@@ -170,7 +311,7 @@
 		  
 		
 		  
-			<li><a href="/categories/面试/" title="面试">面试<sup>6</sup></a></li>
+			<li><a href="/categories/面试/" title="面试">面试<sup>7</sup></a></li>
 		  
 		
 		</ul>
@@ -218,6 +359,10 @@
 				<li><a href="/tags/数据库-MySQL/" title="数据库 MySQL">数据库 MySQL<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/Redis/" title="Redis">Redis<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -225,7 +370,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -233,7 +378,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
     </div>
   </div>
 
