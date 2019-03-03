@@ -11,17 +11,20 @@
     
 
     
-    <meta name="description" content="JAVA">
+    <meta name="description" content="概览容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。 Collection set list queueset 无需，不可重复 hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。  哈希表">
+<meta name="keywords" content="集合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="9-java集合">
 <meta property="og:url" content="https://WangLeiHH.github.io/2019/03/03/9-java集合/index.html">
 <meta property="og:site_name" content="不完整的旋律的博客">
-<meta property="og:description" content="JAVA">
+<meta property="og:description" content="概览容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。 Collection set list queueset 无需，不可重复 hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。  哈希表">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T01:03:26.346Z">
+<meta property="og:image" content="https://i.imgur.com/47r031j.png">
+<meta property="og:updated_time" content="2019-03-03T02:09:47.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="9-java集合">
-<meta name="twitter:description" content="JAVA">
+<meta name="twitter:description" content="概览容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。 Collection set list queueset 无需，不可重复 hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。  哈希表">
+<meta name="twitter:image" content="https://i.imgur.com/47r031j.png">
 
     
     <link rel="alternative" href="/atom.xml" title="不完整的旋律的博客" type="application/atom+xml">
@@ -99,15 +102,54 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。</p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p><img src="https://i.imgur.com/47r031j.png" alt="集合"></p>
+<h2 id="set-list-queue"><a href="#set-list-queue" class="headerlink" title="set list queue"></a>set list queue</h2><h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><ul>
+<li>无需，不可重复</li>
+<li>hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。</li>
+</ul>
+<p>哈希表依赖于哈希值存储。底层依赖于HashCode()和equals（）方法相同则不添加。</p>
+<p>子类LinkedHashSet底层哈希表（唯一性）链表（有序）</p>
+<ul>
+<li>TreeSet：基于红黑树实现，支持有序性操作，例如根据一个范围查找元素的操作。但是查找效率不如HashSet，HashSet查找的时间复杂度为O(1)，TreeSet则为O(logN)。</li>
+</ul>
+<p>自然排序和比较器排序。来确保唯一性。实现Comparable接口， comparator</p>
+<ul>
+<li>LinkedHashSet：具有HashSet的查找效率，且内部使用双向链表维护元素的插入顺序。<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3></li>
+<li>ArrayList:基于动态数组实现，支持随机访问。查找快，增删慢，线程不安去，效率高</li>
+<li>LinkedList：基于双向链表实现，只能顺序访问，但是可以快速地在链表中间插入和删除元素。不仅如此，LinkedList还可以用作栈、队列和双向队列。</li>
+</ul>
+<p>查找慢，增删快，线程不安全，效率高<br>-Vector:和ArrayList类似，但它是安全的。</p>
+<h3 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h3><ul>
+<li>LinkedList：可以用他来实现双向队列。</li>
+<li>PriorityQueue:基于堆结构实现，可以用它来实现优先队列。<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2>将键映射到值的对象，一个映射不能包含重复的键。</li>
+<li>TreeMap:基于红黑树实现。</li>
+<li>hashMap:基于哈希表实现。</li>
+<li>hashTable:和hashMap类似，但它是线程安全的，这意味着同一时刻多个线程可以同时写入hashTable并且不会导致数据不一致，它是遗留问题，不应该去使用他，现在可以使用ConcurrentHashMap来支持线程安全，并且ConcurrnetHashMap的效率更高，因为引入了分段锁。</li>
+<li>linkedHashMap:使用双向蓝标来维护元素的顺序，顺序为插入顺序或者最近最少使用顺序。<h2 id="容器中的设计模式"><a href="#容器中的设计模式" class="headerlink" title="容器中的设计模式"></a>容器中的设计模式</h2><h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3>collection继承了iterable接口，其中iterator（）方法能够产生一个Iterator对象，通过这个队形就能迭代遍历collection中的元素。</li>
+</ul>
+<p>从jdk1.5之后就可以使用foreach方法来遍历实现了iterable接口的聚合对象。</p>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>java.util.Arrays#asList()可以把数组类型转换为list类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">public static &lt;T&gt; List&lt;T&gt; asList(T... a) &#123;</span><br><span class="line">       return new ArrayList&lt;&gt;(a);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>应该注意的是aslist（）的参数为泛型的边长参数，不能使用基本数据类型数组作为参数，只能使用相应的包装类型数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer[] arr = &#123;1,2,3&#125;;</span><br><span class="line"> List list = Arrays.asList(arr);</span><br></pre></td></tr></table></figure></p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面试/">面试</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/集合/">集合</a>
+  </div>
 
 </div>
 
@@ -128,6 +170,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev">
+ <a href="/2019/03/03/idea常用命令/" title="idea常用命令">
+  <strong>上一篇：</strong><br>
+  <span>
+  idea常用命令</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2019/03/02/8-java基础/" title="8-java基础">
@@ -149,7 +199,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a></li></ol>
  
   </div>
 
@@ -170,7 +220,11 @@
 		  
 		
 		  
-			<li><a href="/categories/面试/" title="面试">面试<sup>8</sup></a></li>
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试/" title="面试">面试<sup>9</sup></a></li>
 		  
 		
 		</ul>
@@ -187,7 +241,7 @@
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+				<li><a href="/tags/idea/" title="idea">idea<sup>1</sup></a></li>
 			
 		
 			
@@ -195,7 +249,23 @@
 			
 		
 			
+				<li><a href="/tags/Redis/" title="Redis">Redis<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
 			
 		
 			
@@ -207,15 +277,7 @@
 			
 		
 			
-				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Redis/" title="Redis">Redis<sup>1</sup></a></li>
 			
 		
 			
@@ -233,7 +295,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -241,7 +303,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
     </div>
   </div>
 
