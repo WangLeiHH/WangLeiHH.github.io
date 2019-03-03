@@ -20,7 +20,7 @@
 <meta property="og:description" content="概览容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。 Collection set list queueset 无需，不可重复 hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。  哈希表">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.imgur.com/47r031j.png">
-<meta property="og:updated_time" content="2019-03-03T02:09:47.630Z">
+<meta property="og:updated_time" content="2019-03-03T03:19:47.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="9-java集合">
 <meta name="twitter:description" content="概览容器主要包括Collection和Map两种，Collection存储着对象的集合，而Map存储着键值对（两个对象）的映射表。 Collection set list queueset 无需，不可重复 hashSet:基于哈希表实现（元素是链表的数组），支持快速查找，但不支持有序性操作。并且失去了元素的插入顺序信息，也就是说使用iterator遍历HashSet得到的结果是不确定的。  哈希表">
@@ -102,7 +102,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#concurrent-并发包下的-CopyOnWriteArrayList-类"><span class="toc-number">6.1.</span> <span class="toc-text">concurrent 并发包下的 CopyOnWriteArrayList 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CopyOnWriteArrayList"><span class="toc-number">6.2.</span> <span class="toc-text">CopyOnWriteArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读写分离"><span class="toc-number">6.2.1.</span> <span class="toc-text">读写分离</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用场景"><span class="toc-number">6.3.</span> <span class="toc-text">适用场景</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -135,7 +135,22 @@
 <p>从jdk1.5之后就可以使用foreach方法来遍历实现了iterable接口的聚合对象。</p>
 <h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>java.util.Arrays#asList()可以把数组类型转换为list类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">public static &lt;T&gt; List&lt;T&gt; asList(T... a) &#123;</span><br><span class="line">       return new ArrayList&lt;&gt;(a);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>应该注意的是aslist（）的参数为泛型的边长参数，不能使用基本数据类型数组作为参数，只能使用相应的包装类型数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer[] arr = &#123;1,2,3&#125;;</span><br><span class="line"> List list = Arrays.asList(arr);</span><br></pre></td></tr></table></figure></p>
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2>  
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><ul>
+<li>ArrayList默认大小是10，每次扩容为1.5倍，old+old&gt;&gt;1</li>
+<li>Vector每次扩容为2倍。Vector使用synchronized性能开销大。  <h3 id="concurrent-并发包下的-CopyOnWriteArrayList-类"><a href="#concurrent-并发包下的-CopyOnWriteArrayList-类" class="headerlink" title="concurrent 并发包下的 CopyOnWriteArrayList 类"></a>concurrent 并发包下的 CopyOnWriteArrayList 类</h3></li>
+</ul>
+<p><code>List&lt;String&gt; list = new CopyOnWriteArrayList&lt;&gt;();</code></p>
+<h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><h4 id="读写分离"><a href="#读写分离" class="headerlink" title="读写分离"></a>读写分离</h4><p>写操作在一个复制的数组上进行，读操作还是在原始数组中进行，读写分离，互不影响。</p>
+<p>写操作需要加锁，防止并发写入时导致写入数据丢失。</p>
+<p>写操作结束之后需要把原始数组指向新的复制数组。</p>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>CopyOnWriteArrayList 在写操作的同时允许读操作，大大提高了读操作的性能，因此很适合读多写少的应用场景。</p>
+<p>但是 CopyOnWriteArrayList 有其缺陷：</p>
+<ul>
+<li>内存占用：在写操作时需要复制一个新的数组，使得内存占用为原来的两倍左右；</li>
+<li>数据不一致：读操作不能读取实时性的数据，因为部分写操作的数据还未同步到读数组中。</li>
+</ul>
+<p>所以 CopyOnWriteArrayList 不适合内存敏感以及对实时性要求很高的场景。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -199,7 +214,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection"><span class="toc-number">2.</span> <span class="toc-text">Collection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-list-queue"><span class="toc-number">3.</span> <span class="toc-text">set list queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">3.1.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">3.2.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">3.3.</span> <span class="toc-text">queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">4.</span> <span class="toc-text">Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#容器中的设计模式"><span class="toc-number">5.</span> <span class="toc-text">容器中的设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器模式"><span class="toc-number">5.1.</span> <span class="toc-text">迭代器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适配器模式"><span class="toc-number">5.2.</span> <span class="toc-text">适配器模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码分析"><span class="toc-number">6.</span> <span class="toc-text">源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#concurrent-并发包下的-CopyOnWriteArrayList-类"><span class="toc-number">6.1.</span> <span class="toc-text">concurrent 并发包下的 CopyOnWriteArrayList 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CopyOnWriteArrayList"><span class="toc-number">6.2.</span> <span class="toc-text">CopyOnWriteArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读写分离"><span class="toc-number">6.2.1.</span> <span class="toc-text">读写分离</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用场景"><span class="toc-number">6.3.</span> <span class="toc-text">适用场景</span></a></li></ol></li></ol>
  
   </div>
 
@@ -214,6 +229,10 @@
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
+		
+		  
+			<li><a href="/categories/java/" title="java">java<sup>1</sup></a></li>
+		  
 		
 		  
 			<li><a href="/categories/前端/" title="前端">前端<sup>5</sup></a></li>
@@ -245,6 +264,10 @@
 			
 		
 			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
 			
 		
@@ -253,19 +276,15 @@
 			
 		
 			
-				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+				<li><a href="/tags/链接/" title="链接">链接<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
 			
 		
 			
@@ -273,7 +292,7 @@
 			
 		
 			
-				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
 			
 		
 			
@@ -288,6 +307,10 @@
 				<li><a href="/tags/java基础/" title="java基础">java基础<sup>1</sup></a></li>
 			
 		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
 		</ul>
 </div>
 
@@ -295,7 +318,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -303,7 +326,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
     </div>
   </div>
 
