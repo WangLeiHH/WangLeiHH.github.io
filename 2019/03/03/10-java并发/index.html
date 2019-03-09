@@ -11,17 +11,20 @@
     
 
     
-    <meta name="description" content="JAVA">
+    <meta name="description" content="线程状态转换 新建创建后未启动 就绪有执行的资格，但没有执行权 运行有执行权 阻塞等待获取一个排他锁，如果其线程释放了锁就会结束此状态，处于就绪状态。 死亡可能是线程结束任务之后自己结束，或者产生了异常而结束。 无限期等待等待其他线程显示地唤醒，否则不会被分配CPU时间片 object.wait()/thread.join()/locksupport.park() notify()、notifya">
+<meta name="keywords" content="并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10-java并发">
 <meta property="og:url" content="https://WangLeiHH.github.io/2019/03/03/10-java并发/index.html">
 <meta property="og:site_name" content="不完整的旋律的博客">
-<meta property="og:description" content="JAVA">
+<meta property="og:description" content="线程状态转换 新建创建后未启动 就绪有执行的资格，但没有执行权 运行有执行权 阻塞等待获取一个排他锁，如果其线程释放了锁就会结束此状态，处于就绪状态。 死亡可能是线程结束任务之后自己结束，或者产生了异常而结束。 无限期等待等待其他线程显示地唤醒，否则不会被分配CPU时间片 object.wait()/thread.join()/locksupport.park() notify()、notifya">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T10:45:29.674Z">
+<meta property="og:image" content="https://i.imgur.com/VO9gLqc.jpg">
+<meta property="og:updated_time" content="2019-03-03T15:50:43.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10-java并发">
-<meta name="twitter:description" content="JAVA">
+<meta name="twitter:description" content="线程状态转换 新建创建后未启动 就绪有执行的资格，但没有执行权 运行有执行权 阻塞等待获取一个排他锁，如果其线程释放了锁就会结束此状态，处于就绪状态。 死亡可能是线程结束任务之后自己结束，或者产生了异常而结束。 无限期等待等待其他线程显示地唤醒，否则不会被分配CPU时间片 object.wait()/thread.join()/locksupport.park() notify()、notifya">
+<meta name="twitter:image" content="https://i.imgur.com/VO9gLqc.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="不完整的旋律的博客" type="application/atom+xml">
@@ -99,15 +102,115 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态转换"><span class="toc-number">1.</span> <span class="toc-text">线程状态转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建"><span class="toc-number">1.1.</span> <span class="toc-text">新建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#就绪"><span class="toc-number">1.2.</span> <span class="toc-text">就绪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">1.3.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞"><span class="toc-number">1.4.</span> <span class="toc-text">阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死亡"><span class="toc-number">1.5.</span> <span class="toc-text">死亡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无限期等待"><span class="toc-number">1.6.</span> <span class="toc-text">无限期等待</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#期限等待"><span class="toc-number">1.7.</span> <span class="toc-text">期限等待</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用线程"><span class="toc-number">2.</span> <span class="toc-text">使用线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Runable接口"><span class="toc-number">2.1.</span> <span class="toc-text">实现Runable接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Callable（）接口"><span class="toc-number">2.2.</span> <span class="toc-text">实现Callable（）接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承Thread类"><span class="toc-number">2.3.</span> <span class="toc-text">继承Thread类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现接口VS继承"><span class="toc-number">2.4.</span> <span class="toc-text">实现接口VS继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础线程机制"><span class="toc-number">3.</span> <span class="toc-text">基础线程机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#executer"><span class="toc-number">3.1.</span> <span class="toc-text">executer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Daemon"><span class="toc-number">3.2.</span> <span class="toc-text">Daemon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep"><span class="toc-number">3.3.</span> <span class="toc-text">sleep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield"><span class="toc-number">3.4.</span> <span class="toc-text">yield()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中断"><span class="toc-number">4.</span> <span class="toc-text">中断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InterruptedException"><span class="toc-number">4.1.</span> <span class="toc-text">InterruptedException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Executor-的中断操作"><span class="toc-number">4.2.</span> <span class="toc-text">Executor 的中断操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#互斥同步"><span class="toc-number">5.</span> <span class="toc-text">互斥同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized"><span class="toc-number">5.1.</span> <span class="toc-text">synchronized</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#同步一个代码块"><span class="toc-number">5.1.1.</span> <span class="toc-text">同步一个代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同步一个方法"><span class="toc-number">5.1.2.</span> <span class="toc-text">同步一个方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantLock"><span class="toc-number">5.2.</span> <span class="toc-text">ReentrantLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-number">5.3.</span> <span class="toc-text">比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁的实现"><span class="toc-number">5.3.1.</span> <span class="toc-text">锁的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能"><span class="toc-number">5.3.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#等待可中断"><span class="toc-number">5.3.3.</span> <span class="toc-text">等待可中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#公平锁"><span class="toc-number">5.3.4.</span> <span class="toc-text">公平锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#锁绑定多个条件"><span class="toc-number">5.3.5.</span> <span class="toc-text">锁绑定多个条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用选择"><span class="toc-number">5.4.</span> <span class="toc-text">使用选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程之间的协作"><span class="toc-number">6.</span> <span class="toc-text">线程之间的协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#join"><span class="toc-number">6.1.</span> <span class="toc-text">join()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-notify-notifyAll"><span class="toc-number">6.2.</span> <span class="toc-text">wait() notify() notifyAll()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-和-sleep-的区别"><span class="toc-number">6.3.</span> <span class="toc-text">wait() 和 sleep() 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#await-signal-signalAll"><span class="toc-number">6.4.</span> <span class="toc-text">await() signal() signalAll()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#J-U-C-AQS"><span class="toc-number">7.</span> <span class="toc-text">J.U.C - AQS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CountDownLatch"><span class="toc-number">7.1.</span> <span class="toc-text">CountDownLatch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CyclicBarrier"><span class="toc-number">7.2.</span> <span class="toc-text">CyclicBarrier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Semaphore"><span class="toc-number">7.3.</span> <span class="toc-text">Semaphore</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		  
+		<h2 id="线程状态转换"><a href="#线程状态转换" class="headerlink" title="线程状态转换"></a>线程状态转换</h2><p><img src="https://i.imgur.com/VO9gLqc.jpg" alt="线程"></p>
+<h3 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h3><p>创建后未启动</p>
+<h3 id="就绪"><a href="#就绪" class="headerlink" title="就绪"></a>就绪</h3><p>有执行的资格，但没有执行权</p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>有执行权</p>
+<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>等待获取一个排他锁，如果其线程释放了锁就会结束此状态，处于就绪状态。</p>
+<h3 id="死亡"><a href="#死亡" class="headerlink" title="死亡"></a>死亡</h3><p>可能是线程结束任务之后自己结束，或者产生了异常而结束。</p>
+<h3 id="无限期等待"><a href="#无限期等待" class="headerlink" title="无限期等待"></a>无限期等待</h3><p>等待其他线程显示地唤醒，否则不会被分配CPU时间片</p>
+<p>object.wait()/thread.join()/locksupport.park()</p>
+<p>notify()、notifyall()/被调用的线程执行完毕/.unpark(thread)</p>
+<h3 id="期限等待"><a href="#期限等待" class="headerlink" title="期限等待"></a>期限等待</h3><p>无需等待其他显式地唤醒，在一定时间后会被系统自动唤醒</p>
+<ul>
+<li><p>Thread.sleep() 方法    时间结束</p>
+</li>
+<li><p>设置了 Timeout 参数的 Object.wait() 方法    时间结束 / Object.notify() / Object.notifyAll()</p>
+</li>
+<li>设置了 Timeout 参数的 Thread.join() 方法    时间结束 / 被调用的线程执行完毕</li>
+<li>LockSupport.parkNanos() 方法    LockSupport.unpark(Thread)</li>
+<li>LockSupport.parkUntil() 方法    LockSupport.unpark(Thread)<h2 id="使用线程"><a href="#使用线程" class="headerlink" title="使用线程"></a>使用线程</h2></li>
+<li>实现Runable接口；</li>
+<li>实现Callable接口；</li>
+<li>继承Thread类。</li>
+</ul>
+<p>实现Runable、Callable接口的类只能当做一个可以在线程中运行的任务，不是真正意义上的线程，因此最后还需要通过Thread来调用。可以说任务是通过线程驱动从而执行的</p>
+<h3 id="实现Runable接口"><a href="#实现Runable接口" class="headerlink" title="实现Runable接口"></a>实现Runable接口</h3><p>需要实现run（）方法。</p>
+<p>通过Thread（）调用start()方法来启动线程。</p>
+<h3 id="实现Callable（）接口"><a href="#实现Callable（）接口" class="headerlink" title="实现Callable（）接口"></a>实现Callable（）接口</h3><p>与Runable相比，Callable可以有返回值，返回值通过FutrueTask进行封装。</p>
+<p>加个泛型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public interface Callable&lt;V&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Computes a result, or throws an exception if unable to do so.</span><br><span class="line">     *</span><br><span class="line">     * @return computed result</span><br><span class="line">     * @throws Exception if unable to compute a result</span><br><span class="line">     */</span><br><span class="line">    V call() throws Exception;</span><br></pre></td></tr></table></figure></p>
+<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p>同样也需要实现run()方法，因为Thread类也实现了Runable接口。</p>
+<p>当调用start（）方法启动一个线程时，虚拟机会将该线程放入就绪队列中等待被调度，当一个线程被调度时会指向该线程的run（）方法。</p>
+<h3 id="实现接口VS继承"><a href="#实现接口VS继承" class="headerlink" title="实现接口VS继承"></a>实现接口VS继承</h3><p>实现接口会更好一些</p>
+<ul>
+<li>java不支持多重继承，局限性</li>
+<li>类可能只要求可执行就行，继承整个Thread类开销过大。<h2 id="基础线程机制"><a href="#基础线程机制" class="headerlink" title="基础线程机制"></a>基础线程机制</h2><h3 id="executer"><a href="#executer" class="headerlink" title="executer"></a>executer</h3>executer管理多个异步任务的执行，而无需程序员显式地管理线程的声明周期。这里的异步是指多个任务之间的执行不不干扰，不需要同步操作。<br>主要有三种Executer：</li>
+<li>CachedThreadPool：一个任务创建一个线程；</li>
+<li>FixedThreadPool: 所有任务只能使用固定大小的线程。</li>
+<li>SingleThreadExecutor:相当于大小为1的FixedThreadPool。 </li>
+</ul>
+<h3 id="Daemon"><a href="#Daemon" class="headerlink" title="Daemon"></a>Daemon</h3><p>守护线程时程序运行时在后台提供服务的线程，不属于程序中不可或缺的部分。</p>
+<p>当所有非守护线程结束时，程序也就终止，同时会杀死所有守护线程。<br>main（）属于非守护线程。<br>使用setDaemon()方法将一个线程设置为守护线程。</p>
+<h3 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h3><p>Thread.sleep(millisec)方法会修满当前正在执行的线程，单位毫秒。</p>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield()"></a>yield()</h3><p>礼让 </p>
+<p>对静态方法 Thread.yield() 的调用声明了当前线程已经完成了生命周期中最重要的部分，可以切换给其它线程来执行。该方法只是对线程调度器的一个建议，而且也只是建议具有相同优先级的其它线程可以运行。</p>
+<h2 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h2><p>一个线程执行完毕后会自动结束，如果在运行过程中发生异常也会提前结束。</p>
+<h3 id="InterruptedException"><a href="#InterruptedException" class="headerlink" title="InterruptedException"></a>InterruptedException</h3><p>通过调用一个线程的 interrupt() 来中断该线程，如果该线程处于阻塞、限期等待或者无限期等待状态，那么就会抛出 InterruptedException，从而提前结束该线程。但是不能中断 I/O 阻塞和 synchronized 锁阻塞。</p>
+<h3 id="Executor-的中断操作"><a href="#Executor-的中断操作" class="headerlink" title="Executor 的中断操作"></a>Executor 的中断操作</h3><p>调用 Executor 的 shutdown() 方法会等待线程都执行完毕之后再关闭，但是如果调用的是 shutdownNow() 方法，则相当于调用每个线程的 interrupt() 方法。</p>
+<p>如果只想中断 Executor 中的一个线程，可以通过使用 submit() 方法来提交一个线程，它会返回一个 Future&lt;?&gt; 对象，通过调用该对象的 cancel(true) 方法就可以中断线程。</p>
+<h2 id="互斥同步"><a href="#互斥同步" class="headerlink" title="互斥同步"></a>互斥同步</h2><p>Java 提供了两种锁机制来控制多个线程对共享资源的互斥访问，第一个是 JVM 实现的 synchronized，而另一个是 JDK 实现的 ReentrantLock。</p>
+<h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><h4 id="同步一个代码块"><a href="#同步一个代码块" class="headerlink" title="同步一个代码块"></a>同步一个代码块</h4><p>它只作用于同一个对象，如果调用两个对象上的同步代码块，就不会进行同步。</p>
+<p>对于以下代码，使用 ExecutorService 执行了两个线程，由于调用的是同一个对象的同步代码块，因此这两个线程会进行同步，当一个线程进入同步语句块时，另一个线程就必须等待。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    public class SynchronizedExample &#123;</span><br><span class="line">    </span><br><span class="line">        public void func1() &#123;</span><br><span class="line">            synchronized (this) &#123;</span><br><span class="line">                for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">                    System.out.print(i + &quot; &quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SynchronizedExample e1 = new SynchronizedExample();</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">        executorService.execute(() -&gt; e1.func1());</span><br><span class="line">        executorService.execute(() -&gt; e1.func1());</span><br><span class="line">    &#125;</span><br><span class="line">    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9</span><br><span class="line">```  </span><br><span class="line">对于以下代码，两个线程调用了不同对象的同步代码块，因此这两个线程就不需要同步。从输出结果可以看出，两个线程交叉执行。</span><br></pre></td></tr></table></figure>
+<pre><code>public static void main(String[] args) {
+    SynchronizedExample e1 = new SynchronizedExample();
+    SynchronizedExample e2 = new SynchronizedExample();
+    ExecutorService executorService = Executors.newCachedThreadPool();
+    executorService.execute(() -&gt; e1.func1());
+    executorService.execute(() -&gt; e2.func1());
+}
+0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9
+</code></pre><p><code>`</code></p>
+<h4 id="同步一个方法"><a href="#同步一个方法" class="headerlink" title="同步一个方法"></a>同步一个方法</h4><h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>ReentrantLock 是 java.util.concurrent（J.U.C）包中的锁</p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><h4 id="锁的实现"><a href="#锁的实现" class="headerlink" title="锁的实现"></a>锁的实现</h4><p>synchronized 是 JVM 实现的，而 ReentrantLock 是 JDK 实现的。</p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>新版本 Java 对 synchronized 进行了很多优化，例如自旋锁等，synchronized 与 ReentrantLock 大致相同。</p>
+<h4 id="等待可中断"><a href="#等待可中断" class="headerlink" title="等待可中断"></a>等待可中断</h4><p>当持有锁的线程长期不释放锁的时候，正在等待的线程可以选择放弃等待，改为处理其他事情。</p>
+<p>ReentrantLock 可中断，而 synchronized 不行。</p>
+<h4 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h4><p>公平锁是指多个线程在等待同一个锁时，必须按照申请锁的时间顺序来依次获得锁。</p>
+<p>synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非公平的，但是也可以是公平的。</p>
+<h4 id="锁绑定多个条件"><a href="#锁绑定多个条件" class="headerlink" title="锁绑定多个条件"></a>锁绑定多个条件</h4><p>一个 ReentrantLock 可以同时绑定多个 Condition 对象。</p>
+<h3 id="使用选择"><a href="#使用选择" class="headerlink" title="使用选择"></a>使用选择</h3><p>除非需要使用 ReentrantLock 的高级功能，否则优先使用 synchronized。这是因为 synchronized 是 JVM 实现的一种锁机制，JVM 原生地支持它，而 ReentrantLock 不是所有的 JDK 版本都支持。并且使用 synchronized 不用担心没有释放锁而导致死锁问题，因为 JVM 会确保锁的释放。</p>
+<h2 id="线程之间的协作"><a href="#线程之间的协作" class="headerlink" title="线程之间的协作"></a>线程之间的协作</h2><p>当多个线程可以一起工作去解决某个问题时，如果某些部分必须在其它部分之前完成，那么就需要对线程进行协调。</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h3><p>在线程中调用另一个线程的 join() 方法，会将当前线程挂起，而不是忙等待，直到目标线程结束。</p>
+<p>对于以下代码，虽然 b 线程先启动，但是因为在 b 线程中调用了 a 线程的 join() 方法，b 线程会等待 a 线程结束才继续执行，因此最后能够保证 a 线程的输出先于 b 线程的输出。</p>
+<h3 id="wait-notify-notifyAll"><a href="#wait-notify-notifyAll" class="headerlink" title="wait() notify() notifyAll()"></a>wait() notify() notifyAll()</h3><p>调用 wait() 使得线程等待某个条件满足，线程在等待时会被挂起，当其他线程的运行使得这个条件满足时，其它线程会调用 notify() 或者 notifyAll() 来唤醒挂起的线程。</p>
+<p>它们都属于 Object 的一部分，而不属于 Thread。</p>
+<p>只能用在同步方法或者同步控制块中使用，否则会在运行时抛出 IllegalMonitorStateException。</p>
+<p>使用 wait() 挂起期间，线程会释放锁。这是因为，如果没有释放锁，那么其它线程就无法进入对象的同步方法或者同步控制块中，那么就无法执行 notify() 或者 notifyAll() 来唤醒挂起的线程，造成死锁。</p>
+<h3 id="wait-和-sleep-的区别"><a href="#wait-和-sleep-的区别" class="headerlink" title="wait() 和 sleep() 的区别"></a>wait() 和 sleep() 的区别</h3><ul>
+<li>wait() 是 Object 的方法，而 sleep() 是 Thread 的静态方法；</li>
+<li>wait() 会释放锁，sleep() 不会。<h3 id="await-signal-signalAll"><a href="#await-signal-signalAll" class="headerlink" title="await() signal() signalAll()"></a>await() signal() signalAll()</h3>java.util.concurrent 类库中提供了 Condition 类来实现线程之间的协调，可以在 Condition 上调用 await() 方法使线程等待，其它线程调用 signal() 或 signalAll() 方法唤醒等待的线程。</li>
+</ul>
+<p>相比于 wait() 这种等待方式，await() 可以指定等待的条件，因此更加灵活。</p>
+<p>使用 Lock 来获取一个 Condition 对象。</p>
+<h2 id="J-U-C-AQS"><a href="#J-U-C-AQS" class="headerlink" title="J.U.C - AQS"></a>J.U.C - AQS</h2><p>java.util.concurrent（J.U.C）大大提高了并发性能，AQS 被认为是 J.U.C 的核心。</p>
+<h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><p>用来控制一个线程等待多个线程。</p>
+<p>维护了一个计数器 cnt，每次调用 countDown() 方法会让计数器的值减 1，减到 0 的时候，那些因为调用 await() 方法而在等待的线程就会被唤醒。</p>
+<h3 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h3><p>用来控制多个线程互相等待，只有当多个线程都到达时，这些线程才会继续执行。</p>
+<p>和 CountdownLatch 相似，都是通过维护计数器来实现的。线程执行 await() 方法之后计数器会减 1，并进行等待，直到计数器为 0，所有调用 await() 方法而在等待的线程才能继续执行。</p>
+<p>CyclicBarrier 和 CountdownLatch 的一个区别是，CyclicBarrier 的计数器通过调用 reset() 方法可以循环使用，所以它才叫做循环屏障。</p>
+<p>CyclicBarrier 有两个构造函数，其中 parties 指示计数器的初始值，barrierAction 在所有线程都到达屏障的时候会执行一次。</p>
+<h3 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h3><p>Semaphore 类似于操作系统中的信号量，可以控制对互斥资源的访问线程数。</p>
+<p>以下代码模拟了对某个服务的并发请求，每次只能有 3 个客户端同时访问，请求总数为 10。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面试/">面试</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/并发/">并发</a>
+  </div>
 
 </div>
 
@@ -149,7 +252,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#线程状态转换"><span class="toc-number">1.</span> <span class="toc-text">线程状态转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建"><span class="toc-number">1.1.</span> <span class="toc-text">新建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#就绪"><span class="toc-number">1.2.</span> <span class="toc-text">就绪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">1.3.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻塞"><span class="toc-number">1.4.</span> <span class="toc-text">阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死亡"><span class="toc-number">1.5.</span> <span class="toc-text">死亡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无限期等待"><span class="toc-number">1.6.</span> <span class="toc-text">无限期等待</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#期限等待"><span class="toc-number">1.7.</span> <span class="toc-text">期限等待</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用线程"><span class="toc-number">2.</span> <span class="toc-text">使用线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Runable接口"><span class="toc-number">2.1.</span> <span class="toc-text">实现Runable接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现Callable（）接口"><span class="toc-number">2.2.</span> <span class="toc-text">实现Callable（）接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承Thread类"><span class="toc-number">2.3.</span> <span class="toc-text">继承Thread类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现接口VS继承"><span class="toc-number">2.4.</span> <span class="toc-text">实现接口VS继承</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础线程机制"><span class="toc-number">3.</span> <span class="toc-text">基础线程机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#executer"><span class="toc-number">3.1.</span> <span class="toc-text">executer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Daemon"><span class="toc-number">3.2.</span> <span class="toc-text">Daemon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sleep"><span class="toc-number">3.3.</span> <span class="toc-text">sleep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield"><span class="toc-number">3.4.</span> <span class="toc-text">yield()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中断"><span class="toc-number">4.</span> <span class="toc-text">中断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InterruptedException"><span class="toc-number">4.1.</span> <span class="toc-text">InterruptedException</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Executor-的中断操作"><span class="toc-number">4.2.</span> <span class="toc-text">Executor 的中断操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#互斥同步"><span class="toc-number">5.</span> <span class="toc-text">互斥同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#synchronized"><span class="toc-number">5.1.</span> <span class="toc-text">synchronized</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#同步一个代码块"><span class="toc-number">5.1.1.</span> <span class="toc-text">同步一个代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同步一个方法"><span class="toc-number">5.1.2.</span> <span class="toc-text">同步一个方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReentrantLock"><span class="toc-number">5.2.</span> <span class="toc-text">ReentrantLock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-number">5.3.</span> <span class="toc-text">比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁的实现"><span class="toc-number">5.3.1.</span> <span class="toc-text">锁的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#性能"><span class="toc-number">5.3.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#等待可中断"><span class="toc-number">5.3.3.</span> <span class="toc-text">等待可中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#公平锁"><span class="toc-number">5.3.4.</span> <span class="toc-text">公平锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#锁绑定多个条件"><span class="toc-number">5.3.5.</span> <span class="toc-text">锁绑定多个条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用选择"><span class="toc-number">5.4.</span> <span class="toc-text">使用选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程之间的协作"><span class="toc-number">6.</span> <span class="toc-text">线程之间的协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#join"><span class="toc-number">6.1.</span> <span class="toc-text">join()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-notify-notifyAll"><span class="toc-number">6.2.</span> <span class="toc-text">wait() notify() notifyAll()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wait-和-sleep-的区别"><span class="toc-number">6.3.</span> <span class="toc-text">wait() 和 sleep() 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#await-signal-signalAll"><span class="toc-number">6.4.</span> <span class="toc-text">await() signal() signalAll()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#J-U-C-AQS"><span class="toc-number">7.</span> <span class="toc-text">J.U.C - AQS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CountDownLatch"><span class="toc-number">7.1.</span> <span class="toc-text">CountDownLatch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CyclicBarrier"><span class="toc-number">7.2.</span> <span class="toc-text">CyclicBarrier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Semaphore"><span class="toc-number">7.3.</span> <span class="toc-text">Semaphore</span></a></li></ol></li></ol>
  
   </div>
 
@@ -178,7 +281,7 @@
 		  
 		
 		  
-			<li><a href="/categories/面试/" title="面试">面试<sup>9</sup></a></li>
+			<li><a href="/categories/面试/" title="面试">面试<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -195,15 +298,11 @@
 			
 		
 			
-				<li><a href="/tags/idea/" title="idea">idea<sup>1</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
+				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
 			
 		
 			
@@ -215,11 +314,7 @@
 			
 		
 			
-				<li><a href="/tags/链接/" title="链接">链接<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
+				<li><a href="/tags/idea/" title="idea">idea<sup>1</sup></a></li>
 			
 		
 			
@@ -227,11 +322,27 @@
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链接/" title="链接">链接<sup>1</sup></a></li>
 			
 		
 			
@@ -240,10 +351,6 @@
 		
 			
 				<li><a href="/tags/java基础/" title="java基础">java基础<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -261,7 +368,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
     </div>
   </div>
 

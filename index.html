@@ -86,7 +86,14 @@
     <h1 itemprop="name">10-java并发</h1>
     
      
-           <p itemprop="description"></p>
+           <p itemprop="description">线程状态转换
+新建创建后未启动
+就绪有执行的资格，但没有执行权
+运行有执行权
+阻塞等待获取一个排他锁，如果其线程释放了锁就会结束此状态，处于就绪状态。
+死亡可能是线程结束任务之后自己结束，或者产生了异常而结束。
+无限期等待等待其他线程显示地唤醒，否则不会被分配CPU时间片
+obj</p>
         
     
     <time datetime="2019-03-03T10:45:29.000Z" itemprop="datePublished">2019-03-03</time>
@@ -106,7 +113,8 @@
     <h1 itemprop="name">java汇总</h1>
     
      
-           <p itemprop="description">好的文章Java并发编程：volatile关键字解析https://www.cnblogs.com/dolphin0520/p/3920373.html</p>
+           <p itemprop="description">好的文章Java并发编程：volatile关键字解析https://www.cnblogs.com/dolphin0520/p/3920373.html
+并发编程—CAS（Compare And Swap）https://segmentfault.com/a/1190000015</p>
         
     
     <time datetime="2019-03-03T09:54:26.000Z" itemprop="datePublished">2019-03-03</time>
@@ -352,7 +360,7 @@ Unix有五种I/O模型：</p>
 		  
 		
 		  
-			<li><a href="/categories/面试/" title="面试">面试<sup>9</sup></a></li>
+			<li><a href="/categories/面试/" title="面试">面试<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -369,15 +377,11 @@ Unix有五种I/O模型：</p>
 			
 		
 			
-				<li><a href="/tags/idea/" title="idea">idea<sup>1</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
+				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
 			
 		
 			
@@ -389,11 +393,7 @@ Unix有五种I/O模型：</p>
 			
 		
 			
-				<li><a href="/tags/链接/" title="链接">链接<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IO/" title="IO">IO<sup>1</sup></a></li>
+				<li><a href="/tags/idea/" title="idea">idea<sup>1</sup></a></li>
 			
 		
 			
@@ -401,11 +401,27 @@ Unix有五种I/O模型：</p>
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+				<li><a href="/tags/设计原则/" title="设计原则">设计原则<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/并发/" title="并发">并发<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/COOKIE/" title="COOKIE">COOKIE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/链接/" title="链接">链接<sup>1</sup></a></li>
 			
 		
 			
@@ -414,10 +430,6 @@ Unix有五种I/O模型：</p>
 		
 			
 				<li><a href="/tags/java基础/" title="java基础">java基础<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/集合/" title="集合">集合<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -435,7 +447,7 @@ Unix有五种I/O模型：</p>
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
+       <a href="/tags/COOKIE/" style="font-size: 10px;">COOKIE</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/并发/" style="font-size: 10px;">并发</a> <a href="/tags/数据库-MySQL/" style="font-size: 10px;">数据库 MySQL</a> <a href="/tags/设计原则/" style="font-size: 10px;">设计原则</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/链接/" style="font-size: 10px;">链接</a> <a href="/tags/集合/" style="font-size: 10px;">集合</a>
     </div>
   </div>
 
